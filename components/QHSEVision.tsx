@@ -10,32 +10,38 @@ export function QHSEVision() {
   if (loading) {
     return (
       <div className="py-24 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-6 text-center">Loading...</div>
+        <div className="container mx-auto px-6 text-center text-gray-600 dark:text-gray-400">Loading...</div>
       </div>
     );
   }
 
   return (
-    <section id="vision" className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <div className="flex items-start gap-4">
-              <ShieldCheck className="w-8 h-8 text-blue-600 flex-shrink-0" />
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300">
+              <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl">
+                <ShieldCheck className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">{t('qhv.safety')}</h3>
                 <p className="text-gray-600 dark:text-gray-400">{t('qhv.safetyText')}</p>
               </div>
             </div>
-            <div className="flex items-start gap-4">
-              <ClipboardCheck className="w-8 h-8 text-blue-600 flex-shrink-0" />
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300">
+              <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl">
+                <ClipboardCheck className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">{t('qhv.quality')}</h3>
                 <p className="text-gray-600 dark:text-gray-400">{t('qhv.qualityText')}</p>
               </div>
             </div>
-            <div className="flex items-start gap-4">
-              <Eye className="w-8 h-8 text-blue-600 flex-shrink-0" />
+            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300">
+              <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl">
+                <Eye className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">{t('qhv.vision')}</h3>
                 <p className="text-gray-600 dark:text-gray-400 italic">"{t('qhv.visionText')}"</p>
@@ -49,7 +55,7 @@ export function QHSEVision() {
                 alt="Engineering Team"
                 className="w-full h-80 object-cover opacity-80"
               />
-              <div className="absolute inset-0 bg-blue-900/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </div>
           </div>
         </div>

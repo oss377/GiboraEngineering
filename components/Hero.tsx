@@ -21,7 +21,6 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background - stays dark in both modes for better contrast */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-950/95 via-gray-900/90 to-black/85 z-10" />
         <img
@@ -31,7 +30,6 @@ export default function Hero() {
         />
       </div>
 
-      {/* Hero Content */}
       <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
         <div className="flex justify-center gap-4 mb-6 animate-fade-in">
           <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
@@ -73,7 +71,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
         <div className="w-6 h-10 rounded-full border-2 border-white/40 flex justify-center">
           <div className="w-1 h-2 bg-white/60 rounded-full mt-2 animate-pulse" />

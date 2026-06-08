@@ -38,15 +38,15 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">{t('footer.contactInfo')}</h4>
             <div className="space-y-2 text-gray-400 text-sm">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5" />
+                <MapPin className="w-4 h-4 mt-0.5 text-blue-400" />
                 <span>AA, Lemikura Sub city, Woreda 09</span>
               </div>
               <div className="flex items-start gap-2">
-                <Phone className="w-4 h-4 mt-0.5" />
+                <Phone className="w-4 h-4 mt-0.5 text-blue-400" />
                 <span>+251 911 51 02 94</span>
               </div>
               <div className="flex items-start gap-2">
-                <Mail className="w-4 h-4 mt-0.5" />
+                <Mail className="w-4 h-4 mt-0.5 text-blue-400" />
                 <span>info@giboraengineering.et</span>
               </div>
             </div>
@@ -59,10 +59,10 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder={t('footer.emailPlaceholder')}
-                className="flex-1 px-3 py-2 rounded-l-lg text-gray-900 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 px-3 py-2 rounded-l-lg text-gray-900 dark:text-gray-900 text-sm outline-none focus:ring-2 focus:ring-blue-500"
               />
-              <button className="bg-blue-600 px-3 rounded-r-lg hover:bg-blue-700 transition">
-                <Send className="w-4 h-4" />
+              <button className="bg-blue-600 hover:bg-blue-700 px-3 rounded-r-lg transition-colors">
+                <Send className="w-4 h-4 text-white" />
               </button>
             </div>
           </div>

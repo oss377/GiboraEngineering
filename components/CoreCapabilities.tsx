@@ -10,7 +10,7 @@ export function CoreCapabilities() {
   if (loading) {
     return (
       <div className="py-24 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-6 text-center">Loading...</div>
+        <div className="container mx-auto px-6 text-center text-gray-600 dark:text-gray-400">Loading...</div>
       </div>
     );
   }
@@ -76,7 +76,7 @@ export function CoreCapabilities() {
         <div className="grid md:grid-cols-2 gap-8">
           {capabilities.map((cap, idx) => (
             <div key={idx} className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-              <div className="bg-blue-600 p-4 flex items-center gap-3">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-4 flex items-center gap-3">
                 <cap.icon className="w-7 h-7 text-white" />
                 <h3 className="text-xl font-semibold text-white">{cap.title}</h3>
               </div>
@@ -85,7 +85,7 @@ export function CoreCapabilities() {
                 <ul className="space-y-2">
                   {cap.points.map((point, i) => (
                     <li key={i} className="flex items-start gap-2 text-gray-700 dark:text-gray-300 text-sm">
-                      <span className="text-blue-600 mt-0.5">▹</span>
+                      <span className="text-blue-600 dark:text-blue-400 mt-0.5">▹</span>
                       {point}
                     </li>
                   ))}

@@ -19,7 +19,7 @@ export default function ServicesPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
-        <div className="text-center">Loading...</div>
+        <div className="text-center text-gray-600 dark:text-gray-400">Loading...</div>
       </div>
     );
   }
@@ -80,7 +80,6 @@ export default function ServicesPage() {
 
   return (
     <main className="bg-white dark:bg-gray-900 transition-colors duration-300">
-      {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092335871-4d2e4f2e8b5a?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-center opacity-10" />
         <div className="container mx-auto px-6 relative">
@@ -93,13 +92,12 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8">
             {stats.map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="bg-blue-100 dark:bg-blue-900/30 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div key={idx} className="text-center group">
+                <div className="bg-blue-100 dark:bg-blue-900/30 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <stat.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 dark:text-white">{stat.number}</div>
@@ -110,7 +108,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services List */}
       <section className="py-24 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
         <div className="container mx-auto px-6">
           <div className="space-y-20">
@@ -123,11 +120,11 @@ export default function ServicesPage() {
                     <div className="w-12 h-1 bg-white/30 rounded-full" />
                   </div>
                   <div className="lg:col-span-2 p-8">
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg">{service.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg">{service.description}</p>
                     <div className="grid md:grid-cols-2 gap-3">
                       {service.features.map((feature, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
                           <span className="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
                         </div>
                       ))}
@@ -140,7 +137,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">{t('contact.sendMessage')}</h2>
@@ -149,7 +145,7 @@ export default function ServicesPage() {
           </p>
           <a
             href="/contact"
-            className="inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
+            className="inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
             {t('contact.sendMessage')}
           </a>

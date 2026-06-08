@@ -23,7 +23,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -74,7 +73,6 @@ export default function Navbar() {
       >
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
-            {/* Logo */}
             <Link href="/" className="relative group z-10">
               <div className="flex items-center gap-2">
                 <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-2 rounded-xl shadow-lg">
@@ -89,7 +87,6 @@ export default function Navbar() {
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-4">
               {navLinks.map((link) => (
                 <Link
@@ -109,10 +106,11 @@ export default function Navbar() {
               ))}
               <LanguageSwitcher />
               <ThemeToggle />
-              
+              <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-md hover:shadow-lg">
+                {t('nav.getQuote')}
+              </button>
             </div>
 
-            {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center gap-3">
               <button
                 onClick={() => setMobileMenuOpen(true)}
@@ -125,7 +123,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
       <div
         className={`fixed inset-0 bg-black/50 z-[9999] transition-all duration-300 md:hidden ${
           mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
@@ -133,13 +130,11 @@ export default function Navbar() {
         onClick={() => setMobileMenuOpen(false)}
       />
 
-      {/* Mobile Navigation - Slides from Right */}
       <div
         className={`fixed top-0 right-0 h-full w-full max-w-sm bg-white dark:bg-gray-900 shadow-2xl z-[10000] transition-all duration-300 transform md:hidden ${
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Mobile Menu Header */}
         <div className="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-2">
             <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-2 rounded-xl">
@@ -158,9 +153,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu Content */}
         <div className="flex flex-col h-[calc(100%-73px)]">
-          {/* Navigation Links */}
           <div className="flex-1 py-6">
             <div className="space-y-1">
               {navLinks.map((link) => (
@@ -180,32 +173,27 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Divider */}
           <div className="border-t border-gray-200 dark:border-gray-700 my-4" />
 
-          {/* Language and Theme Controls */}
           <div className="px-6 py-4 space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Language
-              </span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Language</span>
               <LanguageSwitcher />
             </div>
-            
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Theme
-              </span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Theme</span>
               <ThemeToggle />
             </div>
           </div>
 
-          {/* Divider */}
           <div className="border-t border-gray-200 dark:border-gray-700" />
 
-        
+          <div className="p-6">
+            <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 shadow-md">
+              {t('nav.getQuote')}
+            </button>
+          </div>
 
-          {/* Footer Info */}
           <div className="p-6 text-center text-xs text-gray-500 dark:text-gray-400">
             <p>© 2024 Gibora Engineering PLC</p>
             <p className="mt-1">Building the future of Ethiopian connectivity</p>
@@ -213,7 +201,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Spacer to prevent content from hiding under navbar */}
       <div className="h-[60px]" />
     </>
   );
