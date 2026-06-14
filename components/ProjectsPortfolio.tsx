@@ -52,7 +52,7 @@ export function ProjectsPortfolio() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('projects.title')}</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-6" />
+          <div className="w-20 h-1 bg-sky-300 mx-auto mb-6" />
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {t('projects.subtitle')}
           </p>
@@ -66,7 +66,7 @@ export function ProjectsPortfolio() {
                 <th className="px-6 py-4 text-left">{t('projects.client')}</th>
                 <th className="px-6 py-4 text-left">{t('projects.year')}</th>
                 <th className="px-6 py-4 text-left">{t('projects.metric')}</th>
-               </tr>
+              </tr>
             </thead>
             <tbody>
               {projects.map((project, idx) => (
@@ -78,7 +78,7 @@ export function ProjectsPortfolio() {
                 </tr>
               ))}
             </tbody>
-           </table>
+          </table>
         </div>
 
         <div className="mt-12 bg-gray-50 dark:bg-gray-800 rounded-xl p-6 text-center transition-colors duration-300">

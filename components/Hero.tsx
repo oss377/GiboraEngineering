@@ -11,7 +11,7 @@ export default function Hero() {
   if (loading) {
     return (
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/95 via-gray-900/90 to-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-950/95 via-gray-900/90 to-black/85" />
         <div className="relative z-20 text-center">
           <div className="text-white text-xl">Loading...</div>
         </div>
@@ -22,7 +22,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/95 via-gray-900/90 to-black/85 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-950/95 via-gray-900/90 to-black/85 z-10" />
         <img
           src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&q=80&w=2070"
           alt="Telecom Infrastructure"
@@ -33,19 +33,19 @@ export default function Hero() {
       <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
         <div className="flex justify-center gap-4 mb-6 animate-fade-in">
           <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
-            <Network className="w-8 h-8 text-blue-400" />
+            <Network className="w-8 h-8 text-sky-300" />
           </div>
           <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
-            <Wifi className="w-8 h-8 text-blue-400" />
+            <Wifi className="w-8 h-8 text-sky-300" />
           </div>
           <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
-            <Zap className="w-8 h-8 text-blue-400" />
+            <Zap className="w-8 h-8 text-sky-300" />
           </div>
         </div>
         
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-slide-up">
           {t('hero.title')}{" "}
-          <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-sky-300 to-sky-500 bg-clip-text text-transparent">
             {t('hero.titleHighlight')}
           </span>
         </h1>
@@ -57,7 +57,7 @@ export default function Hero() {
         <div className="flex flex-wrap justify-center gap-4 animate-slide-up animation-delay-400">
           <Link
             href="/services"
-            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 group"
+            className="bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 group"
           >
             {t('hero.exploreServices')}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />

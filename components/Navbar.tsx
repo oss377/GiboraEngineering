@@ -3,8 +3,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Network } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -36,6 +37,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/", label: t('nav.home') },
+    { href: "/about", label: t('nav.about') },
     { href: "/services", label: t('nav.services') },
     { href: "/contact", label: t('nav.contact') },
   ];
@@ -48,8 +50,8 @@ export default function Navbar() {
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-2 rounded-xl">
-                <Network className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 rounded-xl overflow-hidden">
+                <div className="w-full h-full bg-gray-200 dark:bg-gray-700" />
               </div>
               <div>
                 <span className="text-xl font-bold text-gray-900 dark:text-white">GIBORA</span>
@@ -74,15 +76,30 @@ export default function Navbar() {
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             <Link href="/" className="relative group z-10">
-              <div className="flex items-center gap-2">
-                <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-2 rounded-xl shadow-lg">
-                  <Network className="w-6 h-6 text-white" />
+              <div className="flex items-center gap-3">
+                {/* Logo Image - No background color */}
+                <div className="relative w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+                  <Image
+                    src="/gibora-logo.jpg"
+                    alt="Gibora Engineering Logo"
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover"
+                    priority
+                    onError={(e) => {
+                      // Fallback if image doesn't exist
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
                 </div>
                 <div>
                   <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                     GIBORA
                   </span>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 -mt-1">ENGINEERING PLC</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 -mt-1 leading-tight">
+                    ENGINEERING PLC
+                  </p>
                 </div>
               </div>
             </Link>
@@ -94,21 +111,19 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative px-2 py-2 text-sm font-medium transition-all duration-300 ${
                     isActive(link.href)
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                      ? "text-sky-500 dark:text-sky-300"
+                      : "text-gray-700 dark:text-gray-300 hover:text-sky-500 dark:hover:text-sky-300"
                   }`}
                 >
                   {link.label}
                   {isActive(link.href) && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full" />
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-sky-300 to-sky-500 rounded-full" />
                   )}
                 </Link>
               ))}
               <LanguageSwitcher />
               <ThemeToggle />
-              <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-md hover:shadow-lg">
-                {t('nav.getQuote')}
-              </button>
+              
             </div>
 
             <div className="md:hidden flex items-center gap-3">
@@ -136,13 +151,26 @@ export default function Navbar() {
         }`}
       >
         <div className="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700">
-          <div className="flex items-center gap-2">
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-2 rounded-xl">
-              <Network className="w-6 h-6 text-white" />
+          <div className="flex items-center gap-3">
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+              <Image
+                src="/gibora-logo.jpg"
+                alt="Gibora Engineering Logo"
+                width={40}
+                height={40}
+                className="w-full h-full object-cover"
+                priority
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
+              />
             </div>
             <div>
               <span className="text-lg font-bold text-gray-900 dark:text-white">GIBORA</span>
-              <p className="text-xs text-gray-500 dark:text-gray-400 -mt-1">ENGINEERING PLC</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 -mt-1 leading-tight">
+                ENGINEERING PLC
+              </p>
             </div>
           </div>
           <button
@@ -163,7 +191,7 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center px-6 py-4 text-base font-medium transition ${
                     isActive(link.href)
-                      ? "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-r-4 border-blue-600"
+                      ? "bg-sky-50 dark:bg-sky-900/30 text-sky-600 dark:text-sky-300 border-r-4 border-sky-400"
                       : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
                   }`}
                 >
@@ -189,7 +217,7 @@ export default function Navbar() {
           <div className="border-t border-gray-200 dark:border-gray-700" />
 
           <div className="p-6">
-            <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 shadow-md">
+            <button className="w-full bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 shadow-md">
               {t('nav.getQuote')}
             </button>
           </div>

@@ -97,8 +97,8 @@ export default function ServicesPage() {
           <div className="grid md:grid-cols-4 gap-8">
             {stats.map((stat, idx) => (
               <div key={idx} className="text-center group">
-                <div className="bg-blue-100 dark:bg-blue-900/30 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                <div className="bg-sky-100 dark:bg-sky-900/30 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <stat.icon className="w-8 h-8 text-sky-500 dark:text-sky-300" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 dark:text-white">{stat.number}</div>
                 <div className="text-gray-600 dark:text-gray-400">{stat.label}</div>
@@ -114,7 +114,7 @@ export default function ServicesPage() {
             {services.map((service, idx) => (
               <div key={idx} className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
                 <div className="grid lg:grid-cols-3">
-                  <div className="lg:col-span-1 bg-gradient-to-br from-blue-600 to-blue-800 p-8 flex flex-col justify-center items-center text-center">
+                  <div className="lg:col-span-1 bg-gradient-to-br from-sky-400 to-sky-600 p-8 flex flex-col justify-center items-center text-center">
                     <service.icon className="w-16 h-16 text-white mb-4" />
                     <h2 className="text-2xl font-bold text-white mb-2">{service.title}</h2>
                     <div className="w-12 h-1 bg-white/30 rounded-full" />
@@ -124,7 +124,7 @@ export default function ServicesPage() {
                     <div className="grid md:grid-cols-2 gap-3">
                       {service.features.map((feature, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="w-5 h-5 text-sky-500 dark:text-sky-300 flex-shrink-0 mt-0.5" />
                           <span className="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
                         </div>
                       ))}
@@ -137,15 +137,15 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+      <section className="py-20 bg-gradient-to-r from-sky-400 to-sky-600">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">{t('contact.sendMessage')}</h2>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-sky-100 mb-8 max-w-2xl mx-auto">
             {t('contact.subtitle')}
           </p>
           <a
             href="/contact"
-            className="inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+            className="inline-block bg-white text-sky-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
             {t('contact.sendMessage')}
           </a>

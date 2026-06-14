@@ -76,8 +76,8 @@ export default function ContactPage() {
       icon: Mail,
       title: "Email Us",
       details: ["info@giboraengineering.et", "giboraengineeringplc@gmail.com"],
-      color: "bg-blue-100 dark:bg-blue-900/20",
-      iconColor: "text-blue-600 dark:text-blue-400",
+      color: "bg-sky-100 dark:bg-sky-900/20",
+      iconColor: "text-sky-600 dark:text-sky-400",
       hasButton: false,
     },
     {
@@ -138,7 +138,7 @@ export default function ContactPage() {
                       {info.hasButton && (
                         <button
                           onClick={getDirections}
-                          className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                          className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors"
                         >
                           <Navigation className="w-4 h-4" />
                           Get Directions
@@ -174,7 +174,7 @@ export default function ContactPage() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition"
                         placeholder="John Doe"
                       />
                     </div>
@@ -188,7 +188,7 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -204,7 +204,7 @@ export default function ContactPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition"
                         placeholder="+251 XXX XXX XXX"
                       />
                     </div>
@@ -217,7 +217,7 @@ export default function ContactPage() {
                         required
                         value={formData.subject}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition"
                       >
                         <option value="">Select a subject</option>
                         <option value="General Inquiry">General Inquiry</option>
@@ -238,7 +238,7 @@ export default function ContactPage() {
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition resize-none"
                       placeholder="Tell us about your project or inquiry..."
                     />
                   </div>
@@ -246,7 +246,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>Sending...</>
@@ -282,14 +282,14 @@ export default function ContactPage() {
             {/* Map Card */}
             <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
               {/* Map Header */}
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4 flex items-center justify-between">
+              <div className="bg-gradient-to-r from-sky-400 to-sky-600 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="bg-white/20 p-2 rounded-lg animate-pulse">
                     <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <h3 className="text-white font-semibold">{locationName}</h3>
-                    <p className="text-blue-100 text-sm">{locationAddress}</p>
+                    <p className="text-sky-100 text-sm">{locationAddress}</p>
                   </div>
                 </div>
                 <button
@@ -381,7 +381,7 @@ export default function ContactPage() {
                   <div className="flex gap-3">
                     <button
                       onClick={getDirections}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium shadow-md hover:shadow-lg"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg transition-colors text-sm font-medium shadow-md hover:shadow-lg"
                     >
                       <Navigation className="w-4 h-4" />
                       Get Directions
@@ -401,27 +401,27 @@ export default function ContactPage() {
             {/* Additional Info Badges */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
               <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 text-center hover:shadow-md transition-shadow group">
-                <div className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">🚗 By Car</div>
+                <div className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-sky-500 transition-colors">🚗 By Car</div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Easy access from main roads</p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 text-center hover:shadow-md transition-shadow group">
-                <div className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">🚌 Public Transport</div>
+                <div className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-sky-500 transition-colors">🚌 Public Transport</div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Bus stop within walking distance</p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 text-center hover:shadow-md transition-shadow group">
-                <div className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">🅿️ Parking</div>
+                <div className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-sky-500 transition-colors">🅿️ Parking</div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Free parking available for visitors</p>
               </div>
             </div>
 
             {/* Exact Coordinates Card */}
-            <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border border-blue-200 dark:border-blue-800">
+            <div className="mt-6 bg-sky-50 dark:bg-sky-900/20 rounded-xl p-4 border border-sky-200 dark:border-sky-800">
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <MapPin className="w-5 h-5 text-sky-600 dark:text-sky-400" />
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Exact GPS Coordinates:</span>
                 </div>
-                <code className="bg-white dark:bg-gray-800 px-3 py-1.5 rounded-lg text-sm font-mono text-blue-700 dark:text-blue-300">
+                <code className="bg-white dark:bg-gray-800 px-3 py-1.5 rounded-lg text-sm font-mono text-sky-700 dark:text-sky-300">
                   Latitude: {latitude}° | Longitude: {longitude}°
                 </code>
                 <button
@@ -429,7 +429,7 @@ export default function ContactPage() {
                     navigator.clipboard.writeText(`${latitude}, ${longitude}`);
                     alert("Coordinates copied to clipboard!");
                   }}
-                  className="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg transition-colors"
+                  className="text-xs bg-sky-500 hover:bg-sky-600 text-white px-3 py-1.5 rounded-lg transition-colors"
                 >
                   Copy Coordinates
                 </button>

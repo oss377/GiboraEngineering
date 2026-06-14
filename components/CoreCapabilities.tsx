@@ -67,7 +67,7 @@ export function CoreCapabilities() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('capabilities.title')}</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-6" />
+          <div className="w-20 h-1 bg-sky-300 mx-auto mb-6" />
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {t('capabilities.subtitle')}
           </p>
@@ -76,7 +76,7 @@ export function CoreCapabilities() {
         <div className="grid md:grid-cols-2 gap-8">
           {capabilities.map((cap, idx) => (
             <div key={idx} className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-4 flex items-center gap-3">
+              <div className="bg-gradient-to-r from-sky-300 to-sky-400 p-4 flex items-center gap-3">
                 <cap.icon className="w-7 h-7 text-white" />
                 <h3 className="text-xl font-semibold text-white">{cap.title}</h3>
               </div>
@@ -85,7 +85,7 @@ export function CoreCapabilities() {
                 <ul className="space-y-2">
                   {cap.points.map((point, i) => (
                     <li key={i} className="flex items-start gap-2 text-gray-700 dark:text-gray-300 text-sm">
-                      <span className="text-blue-600 dark:text-blue-400 mt-0.5">▹</span>
+                      <span className="text-sky-400 dark:text-sky-300 mt-0.5">▹</span>
                       {point}
                     </li>
                   ))}
