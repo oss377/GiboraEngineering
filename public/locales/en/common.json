@@ -14,122 +14,199 @@
     "contactUs": "Contact Us"
   },
   "overview": {
-    "title": "Corporate Overview",
+    "title": "1. CORPORATE OVERVIEW",
     "engineeringLegacy": "Engineering Legacy",
     "description1": "Incorporated in Addis Ababa, Gibora Engineering PLC is a principal local force driving high-capacity telecom network transformations across Ethiopia.",
     "description2": "We combine a highly skilled Ethiopian engineering force with unrivaled field execution capability to deliver business-critical projects under demanding turnaround schedules.",
     "ecaCertified": "ECA Certified",
-    "ecaText": "Holds a full operational Installation License for telecom infrastructure",
+    "ecaText": "Holds a full operational Installation License for telecom infrastructure.",
     "foaPartner": "FOA Partnership",
-    "foaText": "Registered Fiber Optic Association Partner ensuring global standards",
+    "foaText": "Registered Fiber Optic Association Partner ensuring global standards.",
     "sites": "Multi-Region Sites",
     "fiber": "Fiber Backbone"
   },
   "capabilities": {
-    "title": "Core Capabilities",
-    "subtitle": "Comprehensive end-to-end infrastructure solutions for modern telecommunications",
+    "title": "2. CORE CAPABILITIES",
     "bts": {
-      "title": "BTS & Wireless Rollout",
-      "description": "End-to-end Base Transceiver Station rollout solutions under accelerated operational schedules",
+      "title": "BTS & Wireless Rollout (Turnkey Infrastructure)",
+      "description": "We deliver comprehensive, end-to-end Base Transceiver Station rollout solutions under accelerated operational schedules:",
       "points": [
-        "Tower erection & structural engineering assembly",
-        "RF feeder lines & multi-tier Antenna systems",
-        "RRU deployment, calibration & grounding",
-        "Structural alignment & security verification"
+        "Tower erection and complex structural engineering assembly.",
+        "RF feeder lines configuration and multi-tier Antenna system installation.",
+        "RRU unit deployment, high-precision calibration, and grounding validation.",
+        "Structural alignment and multi-point security verification."
       ]
     },
     "fiber": {
-      "title": "Fiber Optic Deployment",
-      "description": "High-tier long-haul transmission corridors designed for maximum data resilience",
+      "title": "Fiber Optic Deployment (Backbone & Metro Rings)",
+      "description": "Providing high-tier long-haul transmission corridors designed for maximum data resilience:",
       "points": [
-        "Heavy infrastructure duct & trenching",
-        "OPGW backbone fiber suspension",
-        "Metro Ring engineering & layout design",
-        "320 Kilometers milestone for Safaricom Ethiopia"
+        "Heavy infrastructure duct installation and trenching in congested urban corridors.",
+        "OPGW backbone fiber suspension along high-voltage utility pathways.",
+        "Metro Ring engineering path survey, architecture, and network layout design.",
+        "End-to-end loop characterization and fiber system performance validation.",
+        "320 Kilometers Milestone: Successfully deployed for Safaricom Ethiopia."
       ]
     },
     "energy": {
-      "title": "Critical Energy Solutions",
-      "description": "Ensuring maximum network uptime through resilient energy infrastructure",
+      "title": "Critical Energy Solutions (Power Configuration)",
+      "description": "Ensuring maximum network uptime through resilient energy infrastructure deployment:",
       "points": [
-        "High-efficiency Rectifier & DC power",
-        "Extended backup battery rollout",
-        "Hybrid Solar/Diesel/Grid integration",
-        "Preventive power maintenance & monitoring"
+        "High-efficiency Rectifier setups and industrial DC power installations.",
+        "Extended backup battery string rollout and runtime optimization.",
+        "Hybrid Solar / Diesel / Power Grid system integration and synchronization.",
+        "Comprehensive preventive power load routine maintenance and safety monitoring."
       ]
     },
     "network": {
-      "title": "Fixed Network Maintenance",
-      "description": "Strategic provisioning for high-availability enterprise networks",
+      "title": "Fixed Network Maintenance (EBU & Data Center Loops)",
+      "description": "Strategic provisioning and ongoing maintenance cycles for high-availability enterprise networks:",
       "points": [
-        "Data Center OSP/ISP loop maintenance",
-        "FTTH & ODN passive network rollout",
-        "System link diagnostics & loss validation",
-        "24/7 technical field support teams"
+        "Data Center OSP/ISP loop maintenance and path monitoring.",
+        "FTTH (Fiber to the Home) and ODN passive network rollout topologies.",
+        "Continuous system link diagnostics, loss validation, and loop testing.",
+        "24/7 Support: Round-the-clock technical field support teams ready for deployment."
       ]
     }
   },
   "projects": {
-    "title": "Strategic Projects Portfolio",
-    "subtitle": "Validated track record of delivering business-critical infrastructure projects under demanding turnaround schedules",
-    "project": "Project Focus",
-    "client": "Strategic Client",
-    "year": "Operational Year",
-    "metric": "Metric / Scope",
-    "partnerships": "Strategic Ecosystem Partnerships"
+    "title": "3. STRATEGIC PROJECTS PORTFOLIO",
+    "subtitle": "Validated track record of delivering business-critical infrastructure projects under demanding turnaround schedules:",
+    "project": "PROJECT FOCUS",
+    "client": "STRATEGIC CLIENT",
+    "year": "OPERATIONAL YEAR",
+    "metric": "METRIC / SCOPE",
+    "projectsList": [
+      {
+        "project": "Negele-Filtu Backbone Project",
+        "client": "Ethio telecom",
+        "year": "2026",
+        "metric": "Critical Infrastructure Delivery"
+      },
+      {
+        "project": "Macro BTS Site Rollout",
+        "client": "Safaricom Ethiopia",
+        "year": "2023–2025",
+        "metric": "175 Multi-Region Sites"
+      },
+      {
+        "project": "Backbone Fiber Expansion",
+        "client": "Safaricom Ethiopia",
+        "year": "2024–2025",
+        "metric": "320 Kilometers Total Expansion"
+      },
+      {
+        "project": "Metro Fiber Infrastructure",
+        "client": "Huawei / Sino Hydro",
+        "year": "2024–2025",
+        "metric": "32 Kilometers (Addis/Harar)"
+      },
+      {
+        "project": "Data Center & ISP Loop",
+        "client": "Tria Trading",
+        "year": "2023–2025",
+        "metric": "Centralized Node Provisioning"
+      }
+    ],
+    "partnerships": "STRATEGIC ECOSYSTEM PARTNERSHIPS:"
   },
   "technical": {
-    "title": "Technical Mobilization",
-    "subtitle": "Elite Infrastructure Base — robust fleet and modern tool matrix for simultaneous deployment across multiple remote corridors",
+    "title": "4. TECHNICAL MOBILIZATION",
+    "subtitle": "Elite Infrastructure Base",
+    "description": "Our robust fleet and modern tool matrix allow for simultaneous deployment across multiple remote corridors:",
     "fleet": "4WD Field-Ready Fleet",
-    "fleetDesc": "Optimized for challenging terrains and remote corridors",
+    "fleetDesc": "optimized for challenging terrains",
     "splicing": "Advanced Fusion Splicing",
-    "splicingDesc": "Core-alignment machinery for precision deployments",
-    "otdr": "OTDR Testing Suites",
-    "otdrDesc": "Optical Time-Domain Reflectometer for validation",
+    "splicingDesc": "core-alignment machinery",
+    "otdr": "Precision OTDR Testing",
+    "otdrDesc": "Optical Time-Domain Reflectometer suites",
     "safety": "Certified Safety Equipment",
     "safetyDesc": "Rigging, climbing & high-altitude gear arrays",
-    "support": "Technical Support",
-    "accident": "Accident Mandate",
-    "standards": "Global Standards"
+    "support": "Round-the-clock technical field support teams ready for deployment",
+    "accident": "Zero Accident mandate across all high-altitude tower operations",
+    "standards": "Compliance with global telecom standards"
   },
   "qhv": {
+    "title": "5. QHSE & STRATEGIC VISION",
     "safety": "Safety First",
     "safetyText": "Zero-accident mandate. Every technician undergoes rigorous EHS training and utilizes certified PPE across all high-altitude tower operations.",
     "quality": "Quality Controls",
     "qualityText": "Stringent compliance with global telecom standards. We provide validated testing reports for every handover to ensure long-term stability.",
     "vision": "Vision 2026",
-    "visionText": "To remain the principal local catalyst for Ethiopia's digital acceleration, delivering robust connectivity infrastructure that empowers every region."
+    "visionText": "To remain the principal local catalyst for Ethiopia's digital acceleration, delivering robust connectivity infrastructure that empowers every region.",
+    "partnerships": "STRATEGIC ECOSYSTEM PARTNERSHIPS:",
+    "partnersList": ["Ethio telecom", "Safaricom", "Huawei", "Nokia", "Sino Hydro", "Omega Eng.", "Tria Trading", "FOA"]
   },
   "footer": {
     "company": "Building the future of Ethiopian connectivity",
     "quickLinks": "Quick Links",
     "contactInfo": "Contact Info",
+    "address": "AA, Lemikura Sub city, Woreda 09, H.N.New",
+    "phone1": "+251 911 51 02 94",
+    "phone2": "+251 911 51 01 54",
+    "email1": "info@giboraengineering.et",
+    "email2": "giboraengineeringplc@gmail.com",
+    "website": "www.giboraengineering.et",
     "newsletter": "Newsletter",
     "subscribe": "Subscribe for updates",
     "emailPlaceholder": "Your email",
     "rights": "All rights reserved"
   },
   "contact": {
-    "title": "Contact Us",
-    "subtitle": "Get in touch with our team for inquiries, quotes, or support",
-    "visitUs": "Visit Us",
-    "callUs": "Call Us",
-    "emailUs": "Email Us",
-    "website": "Website",
-    "hours": "Business Hours",
+    "title": "CONNECT WITH US",
+    "subtitle": "Building the future of Ethiopian connectivity",
+    "address": "Address",
+    "phone": "Phone Numbers",
+    "email": "Corporate Email",
+    "altEmail": "Alternative Email",
+    "website": "Web Address",
     "sendMessage": "Send us a Message",
     "name": "Full Name",
-    "email": "Email Address",
-    "phone": "Phone Number",
+    "emailLabel": "Email Address",
+    "phoneLabel": "Phone Number",
     "subject": "Subject",
     "message": "Message",
     "send": "Send Message",
     "sending": "Sending...",
-    "generalInquiry": "General Inquiry",
-    "projectQuote": "Project Quote",
-    "technicalSupport": "Technical Support",
-    "partnership": "Partnership",
     "success": "Thank you! Your message has been sent successfully."
+  },
+  "aboutPage": {
+    "hero": {
+      "badge": "About Us",
+      "title": "About",
+      "subtitle": "Wireless Network Rollout & Infrastructure Specialists"
+    },
+    "whoWeAre": {
+      "title": "Who We Are",
+      "description": "Incorporated in Addis Ababa, Gibora Engineering PLC is a principal local force driving high-capacity telecom network transformations across Ethiopia.",
+      "team": "Our Team",
+      "teamDesc": "We combine a highly skilled Ethiopian engineering force with unrivaled field execution capability to deliver business-critical projects under demanding turnaround schedules.",
+      "certifications": "Certifications",
+      "eca": "ECA Certified - Full Installation License",
+      "foa": "FOA Partnership - Global Standards"
+    },
+    "whatWeDo": {
+      "title": "What We Do",
+      "subtitle": "Comprehensive end-to-end infrastructure solutions for modern telecommunications"
+    },
+    "journey": {
+      "title": "Our Journey",
+      "subtitle": "Key company milestones since inception",
+      "milestones": [
+        { "year": "2020", "title": "Company Founded", "description": "Gibora Engineering PLC established in Addis Ababa" },
+        { "year": "2023", "title": "First Major Contract", "description": "BTS deployment contract signed with Safaricom Ethiopia" },
+        { "year": "2024", "title": "320km Milestone", "description": "Fiber backbone successfully deployed for Safaricom" },
+        { "year": "2026", "title": "Future Ready", "description": "Negele-Filtu backbone project delivery" }
+      ]
+    },
+    "cta": {
+      "title": "Want to learn more about us?",
+      "subtitle": "Get in touch with our team",
+      "button": "Contact Us"
+    },
+    "stats": {
+      "support": "Technical Support",
+      "safety": "Safety Compliance"
+    }
   }
 }

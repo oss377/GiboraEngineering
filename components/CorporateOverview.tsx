@@ -2,6 +2,7 @@
 "use client";
 
 import { CheckCircle, Award, Globe } from "lucide-react";
+import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
 
 export function CorporateOverview() {
@@ -24,6 +25,7 @@ export function CorporateOverview() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Content */}
           <div>
             <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-6">
               {t('overview.engineeringLegacy')}
@@ -50,17 +52,37 @@ export function CorporateOverview() {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl text-center transition-colors duration-300 hover:shadow-lg">
-              <Award className="w-10 h-10 text-sky-400 mx-auto mb-3" />
-              <div className="text-3xl font-bold text-gray-800 dark:text-white">175+</div>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">{t('overview.sites')}</p>
+
+            {/* Two Cards Below Text */}
+            <div className="grid grid-cols-2 gap-6 mt-10">
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl text-center transition-all duration-300 hover:shadow-lg hover:scale-105 group">
+                <div className="bg-sky-100 dark:bg-sky-900/30 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/50 transition-colors">
+                  <Award className="w-7 h-7 text-sky-500 dark:text-sky-300" />
+                </div>
+                <div className="text-3xl font-bold text-gray-800 dark:text-white">175+</div>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">{t('overview.sites')}</p>
+              </div>
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl text-center transition-all duration-300 hover:shadow-lg hover:scale-105 group">
+                <div className="bg-sky-100 dark:bg-sky-900/30 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/50 transition-colors">
+                  <Globe className="w-7 h-7 text-sky-500 dark:text-sky-300" />
+                </div>
+                <div className="text-3xl font-bold text-gray-800 dark:text-white">320km</div>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">{t('overview.fiber')}</p>
+              </div>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl text-center transition-colors duration-300 hover:shadow-lg">
-              <Globe className="w-10 h-10 text-sky-400 mx-auto mb-3" />
-              <div className="text-3xl font-bold text-gray-800 dark:text-white">320km</div>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">{t('overview.fiber')}</p>
+          </div>
+
+          {/* Right Side - Full Height Image */}
+          <div className="relative h-full min-h-[500px] rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative w-full h-full min-h-[500px]">
+              <Image
+                src="/corporate-image.jpg"
+                alt="Gibora Engineering"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
           </div>
         </div>

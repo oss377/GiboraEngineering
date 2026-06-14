@@ -8,7 +8,7 @@ import { ProjectsPortfolio } from "@/components/ProjectsPortfolio";
 import { TechnicalMobilization } from "@/components/TechnicalMobilization";
 import { QHSEVision } from "@/components/QHSEVision";
 import Partners from "@/components/Partners";
-import Footer from "@/components/Footer";
+
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
       <TechnicalMobilization />
       <QHSEVision />
       <Partners />
-      <Footer />
+     
     </main>
   );
 }

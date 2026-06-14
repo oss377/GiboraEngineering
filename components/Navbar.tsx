@@ -13,6 +13,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const pathname = usePathname();
   const { t, loading } = useTranslation();
 
@@ -35,6 +36,35 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
+  // Check for dark mode
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+
+    checkDarkMode();
+
+    // Create an observer to watch for class changes on html element
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    // Also listen for theme toggle button clicks
+    const handleThemeChange = () => {
+      setTimeout(checkDarkMode, 50);
+    };
+    
+    window.addEventListener('storage', handleThemeChange);
+    
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('storage', handleThemeChange);
+    };
+  }, []);
+
   const navLinks = [
     { href: "/", label: t('nav.home') },
     { href: "/about", label: t('nav.about') },
@@ -44,13 +74,18 @@ export default function Navbar() {
 
   const isActive = (path: string) => pathname === path;
 
+  // Choose logo based on theme
+  // Light mode (white theme) -> use gimbora white.png
+  // Dark mode (dark theme) -> use original logo
+  const logoSrc = isDarkMode ? "/original-logo.png" : "/gimbora white.png";
+
   if (loading) {
     return (
       <nav className="fixed top-0 left-0 right-0 z-[9999] bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl">
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl overflow-hidden">
+              <div className="w-14 h-14 rounded-xl overflow-hidden">
                 <div className="w-full h-full bg-gray-200 dark:bg-gray-700" />
               </div>
               <div>
@@ -77,20 +112,16 @@ export default function Navbar() {
           <div className="flex justify-between items-center">
             <Link href="/" className="relative group z-10">
               <div className="flex items-center gap-3">
-                {/* Logo Image - No background color */}
-                <div className="relative w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+                {/* Logo Image - Larger size with zoom effect for better center visibility */}
+                <div className="relative w-14 h-14 flex-shrink-0 overflow-hidden rounded-xl">
                   <Image
-                    src="/gibora-logo.jpg"
+                    src={logoSrc}
                     alt="Gibora Engineering Logo"
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-cover"
+                    width={56}
+                    height={56}
+                    className="w-full h-full object-cover scale-110 hover:scale-125 transition-transform duration-300"
+                    style={{ objectPosition: "center" }}
                     priority
-                    onError={(e) => {
-                      // Fallback if image doesn't exist
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
                   />
                 </div>
                 <div>
@@ -152,18 +183,15 @@ export default function Navbar() {
       >
         <div className="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+            <div className="relative w-14 h-14 flex-shrink-0 overflow-hidden rounded-xl">
               <Image
-                src="/gibora-logo.jpg"
+                src={logoSrc}
                 alt="Gibora Engineering Logo"
-                width={40}
-                height={40}
-                className="w-full h-full object-cover"
+                width={56}
+                height={56}
+                className="w-full h-full object-cover scale-110"
+                style={{ objectPosition: "center" }}
                 priority
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                }}
               />
             </div>
             <div>
@@ -215,12 +243,6 @@ export default function Navbar() {
           </div>
 
           <div className="border-t border-gray-200 dark:border-gray-700" />
-
-          <div className="p-6">
-            <button className="w-full bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 shadow-md">
-              {t('nav.getQuote')}
-            </button>
-          </div>
 
           <div className="p-6 text-center text-xs text-gray-500 dark:text-gray-400">
             <p>© 2024 Gibora Engineering PLC</p>

@@ -1,4 +1,3 @@
-// app/about/page.tsx
 "use client";
 
 import { 
@@ -13,14 +12,13 @@ import {
   Target,
   Shield,
   TowerControl as Tower,
-  Wifi,
-  Zap,
-  Server,
-  Users,
   Building2,
   Calendar,
-  MapPin
+  Users,
+  TrendingUp,
+  Clock
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -30,335 +28,329 @@ export default function AboutPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
-        <div className="text-center text-gray-600 dark:text-gray-400">Loading...</div>
+        <div className="text-xl text-gray-600 dark:text-gray-400">Loading...</div>
       </div>
     );
   }
 
-  const stats = [
-    { number: "175+", label: "BTS Sites Deployed", icon: Tower },
-    { number: "320km", label: "Fiber Optic Cable", icon: Wifi },
-    { number: "24/7", label: "Technical Support", icon: Shield },
-    { number: "100%", label: "Safety Compliance", icon: CheckCircle },
-  ];
+  // Safe parsing with fallback to empty arrays
+  let strategicProjects: any[] = [];
+  let milestones: any[] = [];
+  let partners: string[] = [];
 
-  const capabilities = [
-    {
-      icon: Tower,
-      title: "BTS & Wireless Rollout",
-      description: "Comprehensive end-to-end Base Transceiver Station rollout solutions under accelerated operational schedules.",
-      points: [
-        "Tower erection and complex structural engineering assembly",
-        "RF feeder lines configuration and multi-tier Antenna system installation",
-        "RRU unit deployment, high-precision calibration, and grounding validation",
-        "Structural alignment and multi-point security verification"
-      ]
-    },
-    {
-      icon: Wifi,
-      title: "Fiber Optic Deployment",
-      description: "High-tier long-haul transmission corridors designed for maximum data resilience.",
-      points: [
-        "Heavy infrastructure duct installation and trenching in congested urban corridors",
-        "OPGW backbone fiber suspension along high-voltage utility pathways",
-        "Metro Ring engineering path survey, architecture, and network layout design",
-        "End-to-end loop characterization and fiber system performance validation"
-      ]
-    },
-    {
-      icon: Zap,
-      title: "Critical Energy Solutions",
-      description: "Ensuring maximum network uptime through resilient energy infrastructure deployment.",
-      points: [
-        "High-efficiency Rectifier setups and industrial DC power installations",
-        "Extended backup battery string rollout and runtime optimization",
-        "Hybrid Solar/Diesel/Power Grid system integration and synchronization",
-        "Comprehensive preventive power load routine maintenance and safety monitoring"
-      ]
-    },
-    {
-      icon: Server,
-      title: "Fixed Network Maintenance",
-      description: "Strategic provisioning and ongoing maintenance cycles for high-availability enterprise networks.",
-      points: [
-        "Data Center OSP/ISP loop maintenance and path monitoring",
-        "FTTH (Fiber to the Home) and ODN passive network rollout topologies",
-        "Continuous system link diagnostics, loss validation, and loop testing",
-        "Round-the-clock technical field support teams ready for deployment"
-      ]
-    }
-  ];
+  try {
+    const projectsData = t('projects.projectsList');
+    strategicProjects = Array.isArray(projectsData) ? projectsData : 
+                       typeof projectsData === 'string' ? JSON.parse(projectsData) : [];
+  } catch (error) {
+    console.error('Failed to parse projectsList:', error);
+    strategicProjects = [];
+  }
 
-  const technicalAssets = [
-    { icon: Truck, title: "4WD Fleet", description: "Field-ready utility fleet optimized for challenging terrains" },
-    { icon: Wrench, title: "Fusion Splicing", description: "Advanced core-alignment Fusion Splicing machinery" },
-    { icon: Target, title: "OTDR Testing", description: "Precision Optical Time-Domain Reflectometer testing suites" },
-    { icon: Shield, title: "Safety Equipment", description: "Certified Rigging, climbing, and high-altitude safety equipment arrays" },
-  ];
+  try {
+    const milestonesData = t('aboutPage.journey.milestones');
+    milestones = Array.isArray(milestonesData) ? milestonesData : 
+                typeof milestonesData === 'string' ? JSON.parse(milestonesData) : [];
+  } catch (error) {
+    console.error('Failed to parse milestones:', error);
+    milestones = [];
+  }
 
-  const partners = [
-    "Ethio telecom", "Safaricom", "Huawei", "Nokia", 
-    "Sino Hydro", "Omega Eng.", "Tria Trading", "FOA"
-  ];
+  try {
+    const partnersData = t('qhv.partnersList');
+    partners = Array.isArray(partnersData) ? partnersData : 
+              typeof partnersData === 'string' ? JSON.parse(partnersData) : [];
+  } catch (error) {
+    console.error('Failed to parse partnersList:', error);
+    partners = [];
+  }
 
   return (
-    <main className="bg-white dark:bg-gray-900 transition-colors duration-300">
-      {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092335871-4d2e4f2e8b5a?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-center opacity-10" />
-        <div className="container mx-auto px-6 relative">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-5xl font-bold text-white mb-6">About Gibora Engineering</h1>
-            <p className="text-xl text-gray-200 dark:text-gray-300">
-              Principal local force driving high-capacity telecom network transformations across Ethiopia
-            </p>
+    <main className="bg-white dark:bg-gray-900">
+      {/* Hero Section - About Page Identity */}
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/about-hero.jpg"
+            alt="Gibora Engineering PLC"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-sky-950/95 via-gray-900/90 to-black/85 z-10" />
+        </div>
+        <div className="relative z-20 text-center px-6 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-3 py-1 border border-white/20 mb-4">
+            <Building2 className="w-3 h-3 text-sky-300" />
+            <span className="text-sky-300 text-xs">{t('aboutPage.hero.badge')}</span>
           </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-3">
+            {t('aboutPage.hero.title')}{' '}
+            <span className="bg-gradient-to-r from-sky-300 to-sky-400 bg-clip-text text-transparent">
+              Gibora Engineering PLC
+            </span>
+          </h1>
+          <div className="w-16 h-0.5 bg-sky-300 mx-auto rounded-full mb-4" />
+          <p className="text-base md:text-lg text-gray-200 max-w-2xl mx-auto">
+            {t('aboutPage.hero.subtitle')}
+          </p>
         </div>
       </section>
 
-      {/* Company Overview Section */}
-      <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+      {/* Who We Are Section */}
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Building2 className="w-8 h-8 text-sky-500" />
-                <span className="text-sky-600 dark:text-sky-400 font-semibold">Who We Are</span>
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">{t('aboutPage.whoWeAre.title')}</h2>
+            <div className="w-12 h-0.5 bg-sky-300 mx-auto mb-4" />
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              {t('aboutPage.whoWeAre.description')}
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-10">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-sky-100 dark:bg-sky-900/30 p-2 rounded-lg">
+                  <Users className="w-5 h-5 text-sky-500" />
+                </div>
+                <h3 className="font-bold text-gray-800 dark:text-white">{t('aboutPage.whoWeAre.team')}</h3>
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Engineering Legacy</h2>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                Incorporated in Addis Ababa, Gibora Engineering PLC is a principal local force driving high-capacity 
-                telecom network transformations across Ethiopia.
+              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                {t('aboutPage.whoWeAre.teamDesc')}
               </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
-                We combine a highly skilled Ethiopian engineering force with unrivaled field execution capability 
-                to deliver business-critical projects under demanding turnaround schedules.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-sky-500 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-gray-800 dark:text-gray-100">ECA Certified</h4>
-                    <p className="text-gray-600 dark:text-gray-300">Holds a full operational Installation License for telecom infrastructure.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-sky-500 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-gray-800 dark:text-gray-100">FOA Partnership</h4>
-                    <p className="text-gray-600 dark:text-gray-300">Registered Fiber Optic Association Partner ensuring global standards.</p>
-                  </div>
-                </div>
-              </div>
             </div>
-            <div className="relative">
-              <div className="bg-gradient-to-br from-sky-100 to-sky-200 dark:from-sky-900/30 dark:to-sky-800/30 rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1581092335871-4d2e4f2e8b5a?auto=format&fit=crop&q=80&w=2070"
-                  alt="Engineering Team"
-                  className="w-full h-96 object-cover"
-                />
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-sky-100 dark:bg-sky-900/30 p-2 rounded-lg">
+                  <Award className="w-5 h-5 text-sky-500" />
+                </div>
+                <h3 className="font-bold text-gray-800 dark:text-white">{t('aboutPage.whoWeAre.certifications')}</h3>
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hidden lg:block">
-                <div className="flex items-center gap-3">
-                  <Calendar className="w-8 h-8 text-sky-500" />
-                  <div>
-                    <div className="font-bold text-gray-900 dark:text-white">Established</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Addis Ababa, Ethiopia</div>
-                  </div>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-sky-500" />
+                  <span className="text-gray-600 dark:text-gray-400 text-sm">{t('aboutPage.whoWeAre.eca')}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-sky-500" />
+                  <span className="text-gray-600 dark:text-gray-400 text-sm">{t('aboutPage.whoWeAre.foa')}</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="text-center group">
-                <div className="bg-sky-100 dark:bg-sky-900/30 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-8 h-8 text-sky-500 dark:text-sky-300" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 dark:text-white">{stat.number}</div>
-                <div className="text-gray-600 dark:text-gray-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Capabilities Section */}
-      <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Core Capabilities</h2>
-            <div className="w-20 h-1 bg-sky-300 mx-auto mb-6" />
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              We deliver comprehensive infrastructure solutions across the telecommunications spectrum
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {capabilities.map((cap, idx) => (
-              <div key={idx} className="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div className="bg-gradient-to-r from-sky-400 to-sky-600 p-4 flex items-center gap-3">
-                  <cap.icon className="w-7 h-7 text-white" />
-                  <h3 className="text-xl font-semibold text-white">{cap.title}</h3>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{cap.description}</p>
-                  <ul className="space-y-2">
-                    {cap.points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-700 dark:text-gray-300 text-sm">
-                        <span className="text-sky-500 dark:text-sky-300 mt-0.5">▹</span>
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Mobilization Section */}
-      <section className="py-24 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Technical Mobilization</h2>
-            <div className="w-20 h-1 bg-sky-300 mx-auto mb-6" />
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Elite Infrastructure Base - Robust fleet and modern tool matrix for simultaneous deployment across multiple remote corridors
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            {technicalAssets.map((asset, idx) => (
-              <div key={idx} className="bg-white dark:bg-gray-900 p-6 rounded-xl text-center shadow-md hover:shadow-lg transition-all duration-300">
-                <div className="bg-sky-100 dark:bg-sky-900/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <asset.icon className="w-8 h-8 text-sky-500 dark:text-sky-300" />
-                </div>
-                <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">{asset.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">{asset.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 grid md:grid-cols-3 gap-6 text-center">
-            <div className="bg-sky-800 dark:bg-sky-950 text-white p-6 rounded-xl transition-colors duration-300">
-              <div className="text-3xl font-bold">24/7</div>
-              <p className="text-sky-200">Round-the-clock technical field support</p>
+          {/* Stats */}
+          <div className="grid md:grid-cols-4 gap-4 mt-10">
+            <div className="bg-gradient-to-br from-sky-500 to-sky-600 rounded-xl p-4 text-center text-white">
+              <div className="text-2xl font-bold">175+</div>
+              <p className="text-sky-100 text-xs">{t('overview.sites')}</p>
             </div>
-            <div className="bg-sky-700 dark:bg-sky-900 text-white p-6 rounded-xl transition-colors duration-300">
-              <div className="text-3xl font-bold">Zero</div>
-              <p className="text-sky-200">Accident mandate across all operations</p>
+            <div className="bg-gradient-to-br from-sky-500 to-sky-600 rounded-xl p-4 text-center text-white">
+              <div className="text-2xl font-bold">320km</div>
+              <p className="text-sky-100 text-xs">{t('overview.fiber')}</p>
             </div>
-            <div className="bg-sky-600 dark:bg-sky-800 text-white p-6 rounded-xl transition-colors duration-300">
-              <div className="text-3xl font-bold">100%</div>
-              <p className="text-sky-200">Compliance with global telecom standards</p>
+            <div className="bg-gradient-to-br from-sky-500 to-sky-600 rounded-xl p-4 text-center text-white">
+              <div className="text-2xl font-bold">24/7</div>
+              <p className="text-sky-100 text-xs">{t('aboutPage.stats.support')}</p>
+            </div>
+            <div className="bg-gradient-to-br from-sky-500 to-sky-600 rounded-xl p-4 text-center text-white">
+              <div className="text-2xl font-bold">100%</div>
+              <p className="text-sky-100 text-xs">{t('aboutPage.stats.safety')}</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* QHSE & Vision Section */}
-      <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300">
-                <div className="bg-sky-100 dark:bg-sky-900/30 p-3 rounded-xl">
-                  <ShieldCheck className="w-8 h-8 text-sky-500 dark:text-sky-300" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Safety First</h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    Zero-accident mandate. Every technician undergoes rigorous EHS training and utilizes 
-                    certified PPE across all high-altitude tower operations.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300">
-                <div className="bg-sky-100 dark:bg-sky-900/30 p-3 rounded-xl">
-                  <ClipboardCheck className="w-8 h-8 text-sky-500 dark:text-sky-300" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Quality Controls</h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    Stringent compliance with global telecom standards. We provide validated testing reports 
-                    for every handover to ensure long-term stability.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300">
-                <div className="bg-sky-100 dark:bg-sky-900/30 p-3 rounded-xl">
-                  <Eye className="w-8 h-8 text-sky-500 dark:text-sky-300" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Vision 2026</h3>
-                  <p className="text-gray-600 dark:text-gray-400 italic">
-                    "To remain the principal local catalyst for Ethiopia's digital acceleration, 
-                    delivering robust connectivity infrastructure that empowers every region."
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-gradient-to-br from-sky-800 to-gray-800 rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1581092335871-4d2e4f2e8b5a?auto=format&fit=crop&q=80&w=2070"
-                  alt="Safety Training"
-                  className="w-full h-80 object-cover opacity-80"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Strategic Partners Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 transition-colors duration-300">
+      {/* What We Do - Core Capabilities */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-6">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Strategic Ecosystem Partners</h2>
-            <div className="w-16 h-0.5 bg-sky-300 mx-auto mt-3" />
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">{t('aboutPage.whatWeDo.title')}</h2>
+            <div className="w-12 h-0.5 bg-sky-300 mx-auto mb-4" />
+            <p className="text-gray-600 dark:text-gray-400 text-sm max-w-2xl mx-auto">
+              {t('aboutPage.whatWeDo.subtitle')}
+            </p>
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {partners.map((partner, idx) => (
-              <div key={idx} className="grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
-                <div className="text-gray-600 dark:text-gray-400 font-semibold text-lg">{partner}</div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow hover:shadow-md transition">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-sky-100 dark:bg-sky-900/30 p-2 rounded-lg">
+                  <Tower className="w-5 h-5 text-sky-500" />
+                </div>
+                <h3 className="font-bold text-gray-800 dark:text-white">{t('capabilities.bts.title')}</h3>
               </div>
-            ))}
+              <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                {t('capabilities.bts.description')}
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow hover:shadow-md transition">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-sky-100 dark:bg-sky-900/30 p-2 rounded-lg">
+                  <Globe className="w-5 h-5 text-sky-500" />
+                </div>
+                <h3 className="font-bold text-gray-800 dark:text-white">{t('capabilities.fiber.title')}</h3>
+              </div>
+              <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                {t('capabilities.fiber.description')}
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow hover:shadow-md transition">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-sky-100 dark:bg-sky-900/30 p-2 rounded-lg">
+                  <TrendingUp className="w-5 h-5 text-sky-500" />
+                </div>
+                <h3 className="font-bold text-gray-800 dark:text-white">{t('capabilities.energy.title')}</h3>
+              </div>
+              <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                {t('capabilities.energy.description')}
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow hover:shadow-md transition">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-sky-100 dark:bg-sky-900/30 p-2 rounded-lg">
+                  <Shield className="w-5 h-5 text-sky-500" />
+                </div>
+                <h3 className="font-bold text-gray-800 dark:text-white">{t('capabilities.network.title')}</h3>
+              </div>
+              <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                {t('capabilities.network.description')}
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-sky-400 to-sky-600">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Build the Future?</h2>
-          <p className="text-sky-100 mb-8 max-w-2xl mx-auto">
-            Partner with Gibora Engineering for reliable, high-quality telecom infrastructure solutions across Ethiopia.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-block bg-white text-sky-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
-            >
-              Contact Us Today
-            </Link>
-            <Link
-              href="/services"
-              className="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
-            >
-              Explore Services
-            </Link>
+      {/* Our Projects */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">{t('projects.title')}</h2>
+            <div className="w-12 h-0.5 bg-sky-300 mx-auto mb-4" />
+            <p className="text-gray-600 dark:text-gray-400 text-sm max-w-2xl mx-auto">
+              {t('projects.subtitle')}
+            </p>
           </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {strategicProjects.length > 0 ? (
+              strategicProjects.map((project, idx) => (
+                <div key={idx} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 hover:shadow-md transition">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-semibold text-sky-500 bg-sky-100 dark:bg-sky-900/30 px-2 py-0.5 rounded">
+                      {project.year}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-gray-800 dark:text-white text-sm mb-1">{project.project}</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs mb-2">{project.client}</p>
+                  <p className="text-xs font-medium text-gray-700 dark:text-gray-300">{project.metric}</p>
+                </div>
+              ))
+            ) : (
+              <div className="col-span-full text-center text-gray-500 dark:text-gray-400">
+                No projects available
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Commitment - QHSE */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">{t('qhv.title')}</h2>
+            <div className="w-12 h-0.5 bg-sky-300 mx-auto mb-4" />
+            <p className="text-gray-600 dark:text-gray-400 text-sm max-w-2xl mx-auto">
+              QHSE & {t('aboutPage.whoWeAre.certifications')}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-5 text-center shadow">
+              <div className="bg-sky-100 dark:bg-sky-900/30 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                <ShieldCheck className="w-6 h-6 text-sky-500" />
+              </div>
+              <h3 className="font-bold text-gray-800 dark:text-white text-base mb-2">{t('qhv.safety')}</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-xs">{t('qhv.safetyText')}</p>
+            </div>
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-5 text-center shadow">
+              <div className="bg-sky-100 dark:bg-sky-900/30 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                <ClipboardCheck className="w-6 h-6 text-sky-500" />
+              </div>
+              <h3 className="font-bold text-gray-800 dark:text-white text-base mb-2">{t('qhv.quality')}</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-xs">{t('qhv.qualityText')}</p>
+            </div>
+            <div className="bg-gradient-to-br from-sky-500 to-sky-600 rounded-xl p-5 text-center text-white shadow">
+              <div className="bg-white/20 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Eye className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-bold text-base mb-2">{t('qhv.vision')}</h3>
+              <p className="text-sky-100 text-xs">{t('qhv.visionText')}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Journey - Timeline */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">{t('aboutPage.journey.title')}</h2>
+            <div className="w-12 h-0.5 bg-sky-300 mx-auto mb-4" />
+            <p className="text-gray-600 dark:text-gray-400 text-sm">{t('aboutPage.journey.subtitle')}</p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-4">
+            {milestones.length > 0 ? (
+              milestones.map((milestone, idx) => (
+                <div key={idx} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 text-center hover:shadow-md transition">
+                  <div className="text-2xl font-bold text-sky-500 mb-1">{milestone.year}</div>
+                  <div className="w-8 h-0.5 bg-sky-300 mx-auto my-2" />
+                  <h3 className="font-semibold text-gray-800 dark:text-white text-sm mb-1">{milestone.title}</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs">{milestone.description}</p>
+                </div>
+              ))
+            ) : (
+              <div className="col-span-full text-center text-gray-500 dark:text-gray-400">
+                No milestones available
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Partners */}
+      <section className="py-12 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-6 text-center">
+          <h3 className="text-base font-semibold text-gray-800 dark:text-white mb-4">{t('projects.partnerships')}</h3>
+          <div className="flex flex-wrap justify-center gap-2">
+            {partners.length > 0 ? (
+              partners.map((partner, idx) => (
+                <span key={idx} className="bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-xs shadow-sm">
+                  {partner}
+                </span>
+              ))
+            ) : (
+              <span className="text-gray-500 dark:text-gray-400 text-xs">No partners listed</span>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-12 bg-gradient-to-r from-sky-600 to-sky-700">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-2">{t('aboutPage.cta.title')}</h2>
+          <p className="text-sky-100 text-sm mb-5">{t('aboutPage.cta.subtitle')}</p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-white text-sky-600 px-5 py-2 rounded-full text-sm font-semibold hover:shadow-lg transition-all hover:scale-105"
+          >
+            {t('aboutPage.cta.button')}
+            <TrendingUp className="w-3 h-3" />
+          </Link>
         </div>
       </section>
     </main>
