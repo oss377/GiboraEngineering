@@ -8,7 +8,6 @@ import { Globe } from 'lucide-react';
 const languages = {
   en: { name: 'English', flag: '🇬🇧' },
   am: { name: 'አማርኛ', flag: '🇪🇹' },
-  om: { name: 'Oromoo', flag: '🇪🇹' },
 };
 
 export default function LanguageSwitcher() {
@@ -49,7 +48,7 @@ export default function LanguageSwitcher() {
                 currentLang === code ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600' : ''
               }`}
             >
-              <span>{flag}</span>
+              {flag}
               <span>{name}</span>
             </button>
           ))}

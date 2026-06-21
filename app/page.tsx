@@ -14,12 +14,12 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <CorporateOverview />
+            <Partners />
       <CoreCapabilities />
+            <CorporateOverview />
       <ProjectsPortfolio />
       <TechnicalMobilization />
       <QHSEVision />
-      <Partners />
      
     </main>
   );

@@ -10,71 +10,68 @@ export function CorporateOverview() {
 
   if (loading) {
     return (
-      <div className="py-24 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-6 text-center text-gray-600 dark:text-gray-400">Loading...</div>
+      <div className="py-16 bg-[#1A1A1A]">
+        <div className="container mx-auto px-4 text-center text-[#CCCCCC] text-sm">Loading...</div>
       </div>
     );
   }
 
   return (
-    <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('overview.title')}</h2>
-          <div className="w-20 h-1 bg-sky-300 mx-auto" />
-        </div>
+    <section className="py-16 bg-[#1A1A1A] transition-colors duration-300">
+      <div className="container mx-auto px-4">
+        
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left Side - Content */}
           <div>
-            <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-6">
+            <h3 className="text-xl font-semibold text-white mb-3">
               {t('overview.engineeringLegacy')}
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            <p className="text-[#CCCCCC] text-sm leading-relaxed mb-3">
               {t('overview.description1')}
             </p>
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
+            <p className="text-[#CCCCCC] text-sm leading-relaxed mb-5">
               {t('overview.description2')}
             </p>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-sky-400 flex-shrink-0 mt-0.5" />
+            <div className="space-y-2">
+              <div className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-[#D4AF37] flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-gray-800 dark:text-gray-100">{t('overview.ecaCertified')}</h4>
-                  <p className="text-gray-600 dark:text-gray-300">{t('overview.ecaText')}</p>
+                  <h4 className="font-semibold text-white text-sm">{t('overview.ecaCertified')}</h4>
+                  <p className="text-[#CCCCCC] text-xs">{t('overview.ecaText')}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-sky-400 flex-shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-[#D4AF37] flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-gray-800 dark:text-gray-100">{t('overview.foaPartner')}</h4>
-                  <p className="text-gray-600 dark:text-gray-300">{t('overview.foaText')}</p>
+                  <h4 className="font-semibold text-white text-sm">{t('overview.foaPartner')}</h4>
+                  <p className="text-[#CCCCCC] text-xs">{t('overview.foaText')}</p>
                 </div>
               </div>
             </div>
 
             {/* Two Cards Below Text */}
-            <div className="grid grid-cols-2 gap-6 mt-10">
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl text-center transition-all duration-300 hover:shadow-lg hover:scale-105 group">
-                <div className="bg-sky-100 dark:bg-sky-900/30 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/50 transition-colors">
-                  <Award className="w-7 h-7 text-sky-500 dark:text-sky-300" />
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="bg-[#222222] p-4 rounded-lg text-center transition-all duration-300 hover:shadow-lg hover:scale-105 group border border-[#D4AF37]/10 hover:border-[#D4AF37]/30">
+                <div className="bg-[#D4AF37]/10 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-[#D4AF37]/20 transition-colors">
+                  <Award className="w-5 h-5 text-[#D4AF37]" />
                 </div>
-                <div className="text-3xl font-bold text-gray-800 dark:text-white">175+</div>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">{t('overview.sites')}</p>
+                <div className="text-xl font-bold text-white">175+</div>
+                <p className="text-[#CCCCCC] text-xs mt-0.5">{t('overview.sites')}</p>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl text-center transition-all duration-300 hover:shadow-lg hover:scale-105 group">
-                <div className="bg-sky-100 dark:bg-sky-900/30 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/50 transition-colors">
-                  <Globe className="w-7 h-7 text-sky-500 dark:text-sky-300" />
+              <div className="bg-[#222222] p-4 rounded-lg text-center transition-all duration-300 hover:shadow-lg hover:scale-105 group border border-[#D4AF37]/10 hover:border-[#D4AF37]/30">
+                <div className="bg-[#D4AF37]/10 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-[#D4AF37]/20 transition-colors">
+                  <Globe className="w-5 h-5 text-[#D4AF37]" />
                 </div>
-                <div className="text-3xl font-bold text-gray-800 dark:text-white">320km</div>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">{t('overview.fiber')}</p>
+                <div className="text-xl font-bold text-white">320km</div>
+                <p className="text-[#CCCCCC] text-xs mt-0.5">{t('overview.fiber')}</p>
               </div>
             </div>
           </div>
 
           {/* Right Side - Full Height Image */}
-          <div className="relative h-full min-h-[500px] rounded-2xl overflow-hidden shadow-xl">
-            <div className="relative w-full h-full min-h-[500px]">
+          <div className="relative h-full min-h-[320px] rounded-xl overflow-hidden shadow-lg">
+            <div className="relative w-full h-full min-h-[320px]">
               <Image
                 src="/corporate-image.jpg"
                 alt="Gibora Engineering"
@@ -82,7 +79,9 @@ export function CorporateOverview() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              {/* Gold gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 border border-[#D4AF37]/20 rounded-xl" />
             </div>
           </div>
         </div>

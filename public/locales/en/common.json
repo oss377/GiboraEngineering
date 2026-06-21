@@ -8,8 +8,9 @@
   },
   "hero": {
     "title": "Wireless Network Rollout &",
-    "titleHighlight": "Infrastructure Specialists",
-    "subtitle": "Principal local force driving high-capacity telecom network transformations across Ethiopia",
+"titleHighlight1": "Infrastructure",
+"titleHighlight2": "Specialists",
+"subtitle": "Principal local force driving high-capacity telecom network transformations across Ethiopia",
     "exploreServices": "Explore Services",
     "contactUs": "Contact Us"
   },

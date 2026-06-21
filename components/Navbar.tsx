@@ -6,14 +6,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "@/hooks/useTranslation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const pathname = usePathname();
   const { t, loading } = useTranslation();
 
@@ -36,33 +34,10 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // Check for dark mode
+  // Force dark mode on mount
   useEffect(() => {
-    const checkDarkMode = () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      setIsDarkMode(isDark);
-    };
-
-    checkDarkMode();
-
-    // Create an observer to watch for class changes on html element
-    const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-
-    // Also listen for theme toggle button clicks
-    const handleThemeChange = () => {
-      setTimeout(checkDarkMode, 50);
-    };
-    
-    window.addEventListener('storage', handleThemeChange);
-    
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('storage', handleThemeChange);
-    };
+    document.documentElement.classList.add('dark');
+    document.documentElement.classList.remove('light');
   }, []);
 
   const navLinks = [
@@ -74,23 +49,21 @@ export default function Navbar() {
 
   const isActive = (path: string) => pathname === path;
 
-  // Choose logo based on theme
-  // Light mode (white theme) -> use gimbora white.png
-  // Dark mode (dark theme) -> use original logo
-  const logoSrc = isDarkMode ? "/original-logo.png" : "/gimbora white.png";
+  // Always use dark mode logo
+  const logoSrc = "/original-logo.png";
 
   if (loading) {
     return (
-      <nav className="fixed top-0 left-0 right-0 z-[9999] bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl">
+      <nav className="fixed top-0 left-0 right-0 z-[9999] bg-[#1A1A1A]/95 backdrop-blur-md shadow-xl border-b border-[#D4AF37]/20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <div className="w-14 h-14 rounded-xl overflow-hidden">
-                <div className="w-full h-full bg-gray-200 dark:bg-gray-700" />
+                <div className="w-full h-full bg-[#D4AF37]/20" />
               </div>
               <div>
-                <span className="text-xl font-bold text-gray-900 dark:text-white">GIBORA</span>
-                <p className="text-xs text-gray-500 dark:text-gray-400 -mt-1">ENGINEERING PLC</p>
+                <span className="text-xl font-bold text-[#D4AF37]">GIBORA</span>
+                <p className="text-xs text-[#CCCCCC] -mt-1">ENGINEERING PLC</p>
               </div>
             </div>
           </div>
@@ -104,15 +77,14 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${
           scrolled
-            ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl border-b border-gray-200 dark:border-gray-700"
-            : "bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800"
+            ? "bg-[#1A1A1A]/95 backdrop-blur-md shadow-xl border-b border-[#D4AF37]/30"
+            : "bg-[#1A1A1A]/80 backdrop-blur-sm border-b border-[#D4AF37]/20"
         }`}
       >
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             <Link href="/" className="relative group z-10">
               <div className="flex items-center gap-3">
-                {/* Logo Image - Larger size with zoom effect for better center visibility */}
                 <div className="relative w-14 h-14 flex-shrink-0 overflow-hidden rounded-xl">
                   <Image
                     src={logoSrc}
@@ -125,10 +97,10 @@ export default function Navbar() {
                   />
                 </div>
                 <div>
-                  <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <span className="text-xl font-bold tracking-tight text-[#D4AF37]">
                     GIBORA
                   </span>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 -mt-1 leading-tight">
+                  <p className="text-xs text-[#CCCCCC] -mt-1 leading-tight">
                     ENGINEERING PLC
                   </p>
                 </div>
@@ -142,46 +114,46 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative px-2 py-2 text-sm font-medium transition-all duration-300 ${
                     isActive(link.href)
-                      ? "text-sky-500 dark:text-sky-300"
-                      : "text-gray-700 dark:text-gray-300 hover:text-sky-500 dark:hover:text-sky-300"
+                      ? "text-[#D4AF37]"
+                      : "text-[#CCCCCC] hover:text-[#D4AF37]"
                   }`}
                 >
                   {link.label}
                   {isActive(link.href) && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-sky-300 to-sky-500 rounded-full" />
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#D4AF37] rounded-full" />
                   )}
                 </Link>
               ))}
               <LanguageSwitcher />
-              <ThemeToggle />
-              
             </div>
 
             <div className="md:hidden flex items-center gap-3">
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition z-10"
+                className="p-2 rounded-lg bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 transition z-10 border border-[#D4AF37]/30"
               >
-                <Menu className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                <Menu className="w-6 h-6 text-[#D4AF37]" />
               </button>
             </div>
           </div>
         </div>
       </nav>
 
+      {/* Mobile Overlay */}
       <div
-        className={`fixed inset-0 bg-black/50 z-[9999] transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 bg-black/70 z-[9999] transition-all duration-300 md:hidden ${
           mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={() => setMobileMenuOpen(false)}
       />
 
+      {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-full max-w-sm bg-white dark:bg-gray-900 shadow-2xl z-[10000] transition-all duration-300 transform md:hidden ${
+        className={`fixed top-0 right-0 h-full w-full max-w-sm bg-[#1A1A1A] shadow-2xl z-[10000] transition-all duration-300 transform md:hidden ${
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex justify-between items-center p-6 border-b border-[#D4AF37]/30">
           <div className="flex items-center gap-3">
             <div className="relative w-14 h-14 flex-shrink-0 overflow-hidden rounded-xl">
               <Image
@@ -195,17 +167,17 @@ export default function Navbar() {
               />
             </div>
             <div>
-              <span className="text-lg font-bold text-gray-900 dark:text-white">GIBORA</span>
-              <p className="text-xs text-gray-500 dark:text-gray-400 -mt-1 leading-tight">
+              <span className="text-lg font-bold text-[#D4AF37]">GIBORA</span>
+              <p className="text-xs text-[#CCCCCC] -mt-1 leading-tight">
                 ENGINEERING PLC
               </p>
             </div>
           </div>
           <button
             onClick={() => setMobileMenuOpen(false)}
-            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+            className="p-2 rounded-lg bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 transition border border-[#D4AF37]/30"
           >
-            <X className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+            <X className="w-6 h-6 text-[#D4AF37]" />
           </button>
         </div>
 
@@ -219,8 +191,8 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center px-6 py-4 text-base font-medium transition ${
                     isActive(link.href)
-                      ? "bg-sky-50 dark:bg-sky-900/30 text-sky-600 dark:text-sky-300 border-r-4 border-sky-400"
-                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                      ? "bg-[#D4AF37]/10 text-[#D4AF37] border-r-4 border-[#D4AF37]"
+                      : "text-[#CCCCCC] hover:bg-[#D4AF37]/5 hover:text-[#D4AF37]"
                   }`}
                 >
                   {link.label}
@@ -229,24 +201,20 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="border-t border-gray-200 dark:border-gray-700 my-4" />
+          <div className="border-t border-[#D4AF37]/20 my-4" />
 
           <div className="px-6 py-4 space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Language</span>
+              <span className="text-sm font-medium text-[#CCCCCC]">Language</span>
               <LanguageSwitcher />
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Theme</span>
-              <ThemeToggle />
             </div>
           </div>
 
-          <div className="border-t border-gray-200 dark:border-gray-700" />
+          <div className="border-t border-[#D4AF37]/20" />
 
-          <div className="p-6 text-center text-xs text-gray-500 dark:text-gray-400">
+          <div className="p-6 text-center text-xs text-[#CCCCCC]">
             <p>© 2024 Gibora Engineering PLC</p>
-            <p className="mt-1">Building the future of Ethiopian connectivity</p>
+            <p className="mt-1 text-[#D4AF37]">Building Ethiopia's Digital Backbone</p>
           </div>
         </div>
       </div>

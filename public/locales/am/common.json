@@ -8,7 +8,8 @@
   },
   "hero": {
     "title": "ሽቦ አልባ ኔትወርክ ማሰማራት እና",
-    "titleHighlight": "የመሠረተ ልማት ስፔሻሊስቶች",
+ "titleHighlight1": "የመሠረተ ልማት",
+  "titleHighlight2": "ስፔሻሊስቶች",
     "subtitle": "ከፍተኛ አቅም ያለው የቴሌኮም ኔትወርክ ለውጥ በመላ ኢትዮጵያ የሚመራ ዋና የሀገር ውስጥ ኃይል",
     "exploreServices": "አገልግሎቶችን ያስሱ",
     "contactUs": "አግኙን"

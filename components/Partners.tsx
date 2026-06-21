@@ -9,34 +9,47 @@ const partners = [
   { name: "Huawei" },
   { name: "Nokia" },
   { name: "Sino Hydro" },
+  { name: "Omega Eng." },
+  { name: "Tria Trading" },
+  { name: "FOA" },
 ];
 
 export default function Partners() {
   const { loading } = useTranslation();
 
   if (loading) {
-    return (
-      <div className="py-16 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-6 text-center text-gray-600 dark:text-gray-400">Loading...</div>
-      </div>
-    );
+    return <div className="py-2 text-center text-white text-sm bg-[#D4AF37]">Loading...</div>;
   }
 
+  const allPartners = [...partners, ...partners, ...partners];
+
   return (
-    <section className="py-16 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Strategic Ecosystem Partners</h2>
-          <div className="w-16 h-0.5 bg-sky-300 mx-auto mt-3" />
-        </div>
-        <div className="flex flex-wrap justify-center items-center gap-12">
-          {partners.map((partner, idx) => (
-            <div key={idx} className="grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
-              <div className="text-gray-600 dark:text-gray-400 font-semibold text-lg">{partner.name}</div>
+    <section className="py-2 bg-[#D4AF37] overflow-hidden">
+      <div className="relative overflow-hidden">
+        <div className="flex animate-marquee-rtl">
+          {allPartners.map((partner, idx) => (
+            <div key={idx} className="flex-shrink-0 mx-6 py-1">
+              <span className="text-white text-sm whitespace-nowrap">
+                {partner.name}
+              </span>
             </div>
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes marquee-rtl {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.33%); }
+        }
+        .animate-marquee-rtl {
+          animation: marquee-rtl 25s linear infinite;
+          width: max-content;
+        }
+        .animate-marquee-rtl:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   );
 }
