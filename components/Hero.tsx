@@ -1,93 +1,92 @@
 // components/Hero.tsx
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { useTranslation } from "@/hooks/useTranslation";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Download, ChevronRight } from 'lucide-react';
 
 export default function Hero() {
-  const { t, loading } = useTranslation();
-
-  if (loading) {
-    return (
-      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[#1A1A1A]" />
-        <div className="relative z-20 text-center">
-          <div className="text-white text-xl">Loading...</div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[80vh] md:h-[80vh] flex items-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-[#1A1A1A]/80 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/70 to-transparent z-10" />
-        
-        {/* Telecom Infrastructure Background */}
-        <img
-          src="about-hero.jpg"
-          alt="Telecom Infrastructure - Ethiopia"
-          className="w-full h-full object-cover"
+        <div className="absolute inset-0 bg-[#0f0f0f]/85 z-10" />
+        <Image
+          src="/about-hero.jpg"
+          alt="Telecommunication infrastructure"
+          fill
+          priority
+          className="object-cover object-center"
+          quality={90}
         />
       </div>
 
-      {/* Content - Left Aligned */}
-      <div className="relative z-20 container mx-auto px-6 md:px-12 lg:px-20">
-        <div className="max-w-2xl">
+      {/* Content Container */}
+      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-20 py-12 md:py-0">
+        <div className="max-w-3xl mx-auto md:mx-0">
           
-          {/* Main Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight animate-fade-in-up animation-delay-100">
-            {t('hero.title')}{" "}
-            
-            {/* titleHighlight1 - Gold */}
-            <span className="text-[#D4AF37]">
-              {t('hero.titleHighlight1')}
+          {/* Desktop Location Badge - Hidden on mobile */}
+          <div className="hidden md:flex items-center gap-2 text-[#D4AF37] font-bold text-[10px] uppercase mb-3">
+            <span className="w-6 h-[2px] bg-[#D4AF37]"></span>
+            Addis Ababa, Ethiopia • ECA Licensed
+          </div>
+          
+          {/* Main Heading */}
+          <h1 className="flex flex-col text-3xl sm:text-4xl md:text-6xl font-extrabold leading-[1.1] text-white mb-3 md:mb-4">
+            {/* Mobile Location Badge - Visible only on mobile */}
+            <span className="text-sm md:text-base font-normal text-[#D4AF37] uppercase tracking-wider md:hidden mb-1">
+              Addis Ababa, Ethiopia
             </span>
-            
-            {/* Space between the two highlights */}
-            {" "}
-            
-            {/* titleHighlight2 - Green */}
-            <span className="text-[#2ECC71]">
-              {t('hero.titleHighlight2')}
-            </span>
+            <span className="text-[2rem] sm:text-[2.5rem] md:text-6xl">BUILDING</span>
+            <span className="text-[2rem] sm:text-[2.5rem] md:text-6xl">ETHIOPIA'S</span>
+            <span className="text-[#D4AF37] text-[2rem] sm:text-[2.5rem] md:text-6xl">DIGITAL</span>
+            <span className="text-[#2ECC71] text-[2rem] sm:text-[2.5rem] md:text-6xl">BACKBONE</span>
           </h1>
           
-          {/* Animated Underline - Gold */}
-          <div className="w-16 h-0.5 bg-[#D4AF37] rounded-full mb-6 animate-fade-in-up animation-delay-200" />
+          {/* Description - Full on desktop, Compact (2 lines) on mobile */}
+          <div className="mb-4 md:mb-6">
+            {/* Mobile: Compact description with line clamp */}
+            <p className="md:hidden text-gray-400 text-xs leading-relaxed line-clamp-2">
+              Turnkey telecom and IT infrastructure — from BTS rollout and fiber 
+              deployment to enterprise networks. Nationwide capability, precision execution.
+            </p>
+            
+            {/* Desktop: Full description */}
+            <p className="hidden md:block text-gray-400 text-sm leading-relaxed max-w-xl">
+              Turnkey telecom and IT infrastructure — from BTS rollout and fiber 
+              deployment to enterprise networks. Nationwide capability, precision execution.
+            </p>
+          </div>
           
-          {/* Description */}
-          <p className="text-base md:text-lg text-[#CCCCCC] mb-8 max-w-xl leading-relaxed animate-fade-in-up animation-delay-300">
-            {t('hero.subtitle')}
-          </p>
-          
-          {/* Buttons */}
-          <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-400">
+          {/* Buttons - Inline-flex on mobile */}
+          <div className="flex flex-wrap items-center gap-2 md:gap-3">
+            {/* Projects Button */}
             <Link
-              href="/services"
-              className="group bg-[#D4AF37] hover:bg-[#C49A2C] text-[#1A1A1A] px-6 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 text-sm"
+              href="#projects"
+              className="bg-[#D4AF37] hover:bg-[#C49A2C] text-[#0f0f0f] px-3 sm:px-5 py-1.5 sm:py-2 rounded font-bold text-[10px] sm:text-[11px] transition-all flex items-center gap-1 sm:gap-2 whitespace-nowrap"
             >
-              {t('hero.exploreServices')}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              <span className="hidden sm:inline">VIEW PROJECTS</span>
+              <span className="sm:hidden">PROJECTS</span>
+              <ChevronRight className="w-3 h-3" />
             </Link>
+            
+            {/* Download Profile Button */}
             <Link
-              href="/contact"
-              className="backdrop-blur-md bg-white/5 border border-white/20 hover:bg-white/10 text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 hover:scale-105 text-sm"
+              href="/profile.pdf"
+              className="border border-gray-600 hover:border-[#D4AF37] text-white px-3 sm:px-5 py-1.5 sm:py-2 rounded font-bold text-[10px] sm:text-[11px] transition-all flex items-center gap-1 sm:gap-2 whitespace-nowrap"
+              download
             >
-              {t('hero.contactUs')}
+              <Download className="w-3 h-3" /> 
+              <span className="hidden sm:inline">DOWNLOAD PROFILE</span>
+              <span className="sm:hidden">PROFILE</span>
             </Link>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
-        <div className="w-5 h-8 rounded-full border-2 border-[#D4AF37]/40 flex justify-center">
-          <div className="w-1 h-1.5 bg-[#D4AF37]/60 rounded-full mt-2 animate-pulse" />
+          
+          {/* Optional: Small decorative element */}
+          <div className="hidden md:block mt-6">
+            <div className="w-12 h-[2px] bg-[#D4AF37]"></div>
+          </div>
         </div>
       </div>
     </section>

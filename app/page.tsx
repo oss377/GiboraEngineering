@@ -9,18 +9,16 @@ import { TechnicalMobilization } from "@/components/TechnicalMobilization";
 import { QHSEVision } from "@/components/QHSEVision";
 import Partners from "@/components/Partners";
 
-
 export default function Home() {
   return (
     <main>
       <Hero />
-            <Partners />
+      <Partners />
       <CoreCapabilities />
-            <CorporateOverview />
+      <CorporateOverview />
       <ProjectsPortfolio />
       <TechnicalMobilization />
       <QHSEVision />
-     
     </main>
   );
 }
